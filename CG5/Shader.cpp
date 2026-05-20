@@ -8,12 +8,12 @@ void Shader::Load(const std::wstring& filePath, const std::string& shaderModel) 
 	ID3DBlob* errorBlob = nullptr;
 
 	HRESULT hr = D3DCompileFromFile(
-		filePath.c_str(),
+	    filePath.c_str(), // シェーダファイル名
 		nullptr,
-	    D3D_COMPILE_STANDARD_FILE_INCLUDE,                // インクルード可能にする
-	    "main", shaderModel.c_str(),                      // エントリーポイント名、シェーダモデル指定
-	    D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION,  // デバッグ用設定
-		0, &shaderBlob, &errorBlob);
+	    D3D_COMPILE_STANDARD_FILE_INCLUDE,               // インクルード可能にする
+	    "main", shaderModel.c_str(),                     // エントリーポイント名、シェーダモデル指定
+	    D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, // デバッグ用設定
+	    0, &shaderBlob, &errorBlob);
 
 	// エラーが発生した場合、止める
 	if (FAILED(hr)) {
@@ -25,18 +25,18 @@ void Shader::Load(const std::wstring& filePath, const std::string& shaderModel) 
 	}
 	// 生成したshaderBlobをとっておく
 	blob_ = shaderBlob;
+}
 
-	// コンパイル済みのシェーダーデータを返す　※コンパイルの場合は nullptr となる
-	ID3DBlob* Shader::GetBlob() { return blob_; }
+// コンパイル済みのシェーダーデータを返す　※未コンパイルの場合は nullptr となる
+ID3DBlob* Shader::GetBlob() { return blob_; }
 
-	// コンストラクタ
-		Shader::Shader() {}
+// コンストラクタ
+Shader::Shader() {}
 
-		// デストラクタ
-		Shader::~Shader() {
-			if (blob_ != nullptr) {
-				blob_->Release();
-				blob_ = nullptr;
-			}
-	    }
+// デストラクタ
+Shader::~Shader() {
+	if (blob_ != nullptr) {
+		blob_->Release();
+		blob_ = nullptr;
+	}
 }
