@@ -55,6 +55,7 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	// 全ての色要素を書き込む
 	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
 
+
 	// RasterizerState ---------------------------------
 	D3D12_RASTERIZER_DESC rasterizerDesc{};
 	// 裏面(反時計回り)をかリングする
