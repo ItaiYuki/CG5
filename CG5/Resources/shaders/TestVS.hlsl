@@ -5,12 +5,12 @@
 
 struct VertexShaderOutput
 {
-    float4 poition : SV_POSITION;
+    float32_t4 poition : SV_POSITION;
 };
 
 struct VertexShaderInput
 {
-    float4 position : POSITION0;
+    float32_t4 position : POSITION0;
 };
 
 VertexShaderOutput main( VertexShaderInput input )
