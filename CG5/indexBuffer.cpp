@@ -1,4 +1,4 @@
-#include "indexBuffer.h"
+#include "IndexBuffer.h"
 #include "KamataEngine.h"
 
 #include <cassert>
