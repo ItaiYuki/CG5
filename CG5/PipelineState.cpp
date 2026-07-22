@@ -1,5 +1,6 @@
 #include "PipelineState.h"
 #include "KamataEngine.h"
+#include <cassert>
 
 using namespace KamataEngine;
 
@@ -9,8 +10,9 @@ void PipelineState::Create(D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPipelineSt
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
 	ID3D12PipelineState* graphicsPipelineState = nullptr;
+	[[maybe_unused]]
 	HRESULT hr = dxCommon->GetDevice()->CreateGraphicsPipelineState(&graphicsPipelineStateDesc, IID_PPV_ARGS(&graphicsPipelineState));
-	assert(SUCCEEDED(hr));
+	 assert(SUCCEEDED(hr));
 
 	// 生成した PipelineState をとっておく
 	pipelineState_ = graphicsPipelineState;
